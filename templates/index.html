@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email Validation with DB</title>
+</head>
+<body>
+    <div class= "container">   
+      <!--This one is to provide the user a message if the it is invalid-->
+        {% with messages = get_flashed_messages() %} <!--Basic form validation- helps us declare a var in our template that we can use within a specific scope.-->
+          {% if messages %}<!--check if there are any msgs that came back from get_flashed_messages function.-->
+            {% for message in messages %} <!--Loop through all messages.-->
+                <p>{{message}}</p> <!--print the msg one by one each in p tag-->
+            {% endfor %} <!--end for-->
+          {% endif %}<!--end if conditional-->
+        {% endwith %}<!--end with -->
+    <form action='/process' method='POST'> <!--sending sensitive information-->
+        Email:<input type="email" name="email"><!--name is needed so server can id the info-->
+        <input type="submit" value="Submit">     
+    </form>
+    
+
+      </div> 
+</body>
+</html>
+
